@@ -82,19 +82,21 @@ LocalDate(日期 / 年月日)、LocalTime(时间 / 时分秒)、LocalDateTime (�
     2. 使用 DateTimeFormatter 对象来进行格式化
     3. 提供 plus 和 minus 方法可以对当前时间进行加或者减
 #### DateTimeFormatter 格式日期类
-    DateTimeFormat dtf = DateTImeFormatter.ofPattern(格式)；
-    String str = dtf.format(日期对象)；
-
+```java
+DateTimeFormat dtf = DateTImeFormatter.ofPattern(格式)；
+String str = dtf.format(日期对象)；
+```
 #### Instant 时间戳
 类似于 Date 提供了一系列 和 Date 类转换的方式
+```java
+Instant ---> Date:
+通过 from 可以把 Instant 转成 Date
+Date date = Date.from(Instant)
 
-    Instant ---> Date:
-    通过 from 可以把 Instant 转成 Date
-    Date date = Date.from(Instant)
-
-    Date ---> Instant:
-    通过 date 的 toInstant() 可以把 date 转成 Instant 对象
-    Instant instant = date.toInstant()
+Date ---> Instant:
+通过 date 的 toInstant() 可以把 date 转成 Instant 对象
+Instant instant = date.toInstant()
+```
 #### 更多方法
 - LocalDateTime 类
 - MonthDay 类：检查重复时间
@@ -105,10 +107,10 @@ LocalDate(日期 / 年月日)、LocalTime(时间 / 时分秒)、LocalDateTime (�
 
 ## String 翻转 
 双指针翻转
-    
-    char [] c = str.toCharArray();
-    return new String(c);
-    throw new RuntimeException("参数不正确");
-
+```java 
+char [] c = str.toCharArray();
+return new String(c);
+throw new RuntimeException("参数不正确");
+`s``
 字符格式化：``` String.format()``` %s %d
  

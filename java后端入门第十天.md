@@ -3,16 +3,17 @@
 接口就是给出一些没有实现的方法，封装在一起，当某个类要使用的时候，再根据具体情况把这些方法写出来。
 
 语法：
-
-    interface 接口名{
-        // 属性
-        // 抽象方法
-    }
-    class 类名 implements 接口{
-        自己属性；
-        自己方法
-        必须实现的接口的抽象方法
-    }
+```java
+interface 接口名{
+    // 属性
+    // 抽象方法
+}
+class 类名 implements 接口{
+    自己属性；
+    自己方法
+    必须实现的接口的抽象方法
+}
+```
 接口是更加抽象的抽象类，抽象类里的方法可以有方法体，接口里所有方法都没有方法体。 接口体现了程序设计的多态和高内聚低耦合的设计思想。
 
 jdk 8.0 后接口类可以有静态方法，默认方法。
@@ -50,15 +51,16 @@ jdk 8.0 后接口类可以有静态方法，默认方法。
 一个类的内部又完整的嵌套了另一个类结构， 被嵌套的类称为内部类（inner class）， 嵌套其他类的类称为外部类（outer class）。 是类的第五大成员。 内部类最大的特点是可以直接访问私有属性， 并且可以体现类与类之间的包含关系。 （学习难点、重点）
 
 基本语法：
-
-    class Outer{ //外部类
-        class Inner{ //内部类
-
-        }
-    }
-    class Other{ //外部其它类
+```java
+class Outer{ //外部类
+    class Inner{ //内部类
 
     }
+}
+class Other{ //外部其它类
+
+}
+```
 ### 分类
 - 定义在外部类的局部位置上 （方法内）：
     - 局部内部类（有类名）
@@ -86,69 +88,73 @@ jdk 8.0 后接口类可以有静态方法，默认方法。
 说明： 匿名内部类是定义在外部类的局部位置，比如方法 / 代码块 中，没有类名
 
 基本语法:
-
-    new 类或接口（参数列表）{
-        类体
-    }；
+```java
+new 类或接口（参数列表）{
+    类体
+}；
+```
     
 通过 .getClass() 获得运行类型。
 #### 基于接口的匿名内部类
 **只是使用一次，后面再不使用**
-
-    相当于：
-    /*
-    class Outer04$1 implements IA {
-    @Override
-    public void cry() {
-        System.out.println("老虎叫唤...");
-        }
+```java
+相当于：
+/*
+class Outer04$1 implements IA {
+@Override
+public void cry() {
+    System.out.println("老虎叫唤...");
     }
-    */
-    IA tiger = new IA() {
-    @Override
-    public void cry() {
-        System.out.println("老虎叫唤...");
-        }
-    };
-    
+}
+*/
+IA tiger = new IA() {
+@Override
+public void cry() {
+    System.out.println("老虎叫唤...");
+    }
+};
+ ```   
     1. tiger 的编译类型 ? IA
     2. tiger 的运行类型 ? 就是匿名内部类，名称是 Outer04$1
     3. jdk 底层在创建匿名内部类 Outer04 $1, 立即马上就创建了 Outer04$1 实例，并且把地址返回给 tiger
     4. 匿名内部类使用一次，就不能再使用
 
 #### 基于类的匿名内部类
-    相当于：
-    /*
-    class Outer04$2 extends Father{
-    @Override
-    public void test() {
-        System.out.println("匿名内部类重写了 test 方法");
-        }
+```java
+相当于：
+/*
+class Outer04$2 extends Father{
+@Override
+public void test() {
+    System.out.println("匿名内部类重写了 test 方法");
     }
-    */
-    Father father = new Father("jack"){
-    @Override
-    public void test() {
-        System.out.println("匿名内部类重写了 test 方法");
-        }
-    };
-        System.out.println("father 对象的运行类型=" + father.getClass());//Outer04$2
-
+}
+*/
+Father father = new Father("jack"){
+@Override
+public void test() {
+    System.out.println("匿名内部类重写了 test 方法");
+    }
+};
+    System.out.println("father 对象的运行类型=" + father.getClass());//Outer04$2
+```
     1. father 编译类型 Father
     2. father 运行类型 Outer04$2
     3. 底层会创建匿名内部类
     4. 同时也直接返回了 匿名内部类 Outer04$2 的对
 #### 基于抽象类的匿名内部类
-    Animal animal = new Animal(){
-        void eat() {
-            System.out.println("小狗吃骨头...");
-        }
-    };
-        animal.eat();     
-    
-    abstract class Animal { //抽象类
-        abstract void eat();
+```java
+Animal animal = new Animal(){
+    void eat() {
+        System.out.println("小狗吃骨头...");
     }
+};
+    animal.eat();     
+
+abstract class Animal { //抽象类
+    abstract void eat();
+}
+```
 #### 注意事项，使用细节
 1. 匿名内部类既是一个类的定义，同时它本身也是一个对象，从语法上来看，它既有定义类的特征，也有创建对象的特征。可以用以下两种方法调用：
     - Person p = new Person(){};  p.cry();

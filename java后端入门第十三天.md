@@ -11,22 +11,22 @@
 3. 自动装箱底层调用的是 valueOf 方法，比如 Integer.valueOf()
 
 jdk5 前是手动装箱和拆箱，手动装箱 int->Intege
-
-    int n1 = 100;
-    Integer integer = new Integer(n1);
-    Integer integer1 = Integer.valueOf(n1)
+```java
+int n1 = 100;
+Integer integer = new Integer(n1);
+Integer integer1 = Integer.valueOf(n1)
 手动拆箱， Integer -> int
-    
-    int i = integer.intValue()
 
-jdk5 后，就可以自动装箱和自动拆箱
+int i = integer.intValue()
 
-    int n2 = 200;
-    //自动装箱 int->Integer
-    Integer integer2 = n2; //底层使用的是 Integer.valueOf(n2)
-    //自动拆箱 Integer->int
-    int n3 = integer2; //底层仍然使用的是 intValue()方法
+//jdk5 后，就可以自动装箱和自动拆箱
 
+int n2 = 200;
+//自动装箱 int->Integer
+Integer integer2 = n2; //底层使用的是 Integer.valueOf(n2)
+//自动拆箱 Integer->int
+int n3 = integer2; //底层仍然使用的是 intValue()方法
+```
 三元运算符要看成一个整体
 ``` Object obj1 = true ? new Integer(1) : new Double(2.0);  结果为1.0``` int 类型整体向上转型为 double，提升优先级
 
@@ -126,22 +126,23 @@ String类时保存字符串常量的。每次更新都需要重新开辟空间�
 
 ### String 和 StringBuffer 相互转换
 **看 String——>StringBuffer：**
-
-    1. 方式 1 使用构造器
-    //注意： 返回的才是 StringBuffer 对象，对 str 本身没有影响
-    StringBuffer stringBuffer = new StringBuffer(str);
-     
-    2. 方式 2 使用的是 append 方法
-    StringBuffer stringBuffer1 = new StringBuffer();
-    stringBuffer1 = stringBuffer1. append(str);
-
+```java
+ 1. 方式 1 使用构造器
+ //注意： 返回的才是 StringBuffer 对象，对 str 本身没有影响
+ StringBuffer stringBuffer = new StringBuffer(str);
+  
+ 2. 方式 2 使用的是 append 方法
+ StringBuffer stringBuffer1 = new StringBuffer();
+ stringBuffer1 = stringBuffer1. append(str);
+```
 **看看 StringBuffer ->String：**
-
-    StringBuffer stringBuffer3 = new StringBuffer("韩顺平教育");
-    1. 方式 1 使用 StringBuffer 提供的 toString 方法
-    String s = stringBuffer3.toString();
-    2. 方式 2: 使用构造器来搞定
-    String s1 = new String(stringBuffer3)
+```java
+StringBuffer stringBuffer3 = new StringBuffer("韩顺平教育");
+1. 方式 1 使用 StringBuffer 提供的 toString 方法
+String s = stringBuffer3.toString();
+2. 方式 2: 使用构造器来搞定
+String s1 = new String(stringBuffer3)
+```
 ### 常见方法
 1. 增 append 
 2. 删 delete : 删除索引为 >= start && < end 处的字符
@@ -151,16 +152,16 @@ String类时保存字符串常量的。每次更新都需要重新开辟空间�
 6. 长度 : length()
 
 测试题：
+```java
+String str = null;// ok
+StringBuffer sb = new StringBuffer(); //ok
+sb.append(str);//需要看源码 , 底层调用的是 AbstractStringBuilder 的 appendNull
+System.out.println(sb.length());//4
 
-    String str = null;// ok
-    StringBuffer sb = new StringBuffer(); //ok
-    sb.append(str);//需要看源码 , 底层调用的是 AbstractStringBuilder 的 appendNull
-    System.out.println(sb.length());//4
-
-    //下面的构造器，会抛出 NullpointerException
-    StringBuffer sb1 = new StringBuffer(str);//看底层源码 super(str.length() + 16);
-    System.out.println(sb1);
-
+//下面的构造器，会抛出 NullpointerException
+StringBuffer sb1 = new StringBuffer(str);//看底层源码 super(str.length() + 16);
+System.out.println(sb1);
+```
   
 
 

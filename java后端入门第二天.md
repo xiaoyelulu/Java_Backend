@@ -327,9 +327,11 @@ JDK8,11
 ## 键盘输入语句
 扫描器，Scanner
 
-```import java.util.Scanner;```
-
-```Scanner scanner = new Scanner(System.in);System.out.println("请输入名字");String name = scanner.next();```
+```java
+import java.util.Scanner;
+Scanner scanner = new Scanner(System.in);System.out.println("请输入名字");
+String name = scanner.next();
+```
 步骤：
 1. 导入该类的所在包，java.util.*
 2. 创建该类对象（声明变量）

@@ -24,11 +24,12 @@ git status
 输入git push -u origin master  把代码上传到github仓库
 
 每次更新时，如果是与
-
-    命令行中输入:
-    git pull --rebase origin master
-    之后再输入
-    git push -u origin master
+```
+命令行中输入:
+git pull --rebase origin master
+之后再输入
+git push -u origin master
+```
 
 github项目上传成功
 ### 忽略信息

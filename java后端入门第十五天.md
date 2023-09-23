@@ -41,23 +41,24 @@
 4. Iterator 仅用于遍历集合，本身并不存放对象
 
 **迭代器的执行原理：**
-
-    Iterator iterator = coll.iterator(); // 得到一个集合的迭代器
-    // hasNext(): 判断是否还有下一个元素
-    while (iterator.hasNext()){
-        // next()作用： 1. 下移 2. 将下移以后集合位置上的元素返回
-        System.out.print(iterator.next());
-    }
+```java
+Iterator iterator = coll.iterator(); // 得到一个集合的迭代器
+// hasNext(): 判断是否还有下一个元素
+while (iterator.hasNext()){
+    // next()作用： 1. 下移 2. 将下移以后集合位置上的元素返回
+    System.out.print(iterator.next());
+}
+```
 在调用 iterator.next() 方法之前必须要调用 iterator.hasNext() 进行检测。 若不调用，且下一条记录无效时，程序会报错。 老师教大家一个快捷键，快速生成 while => itit //显示所有的快捷键的的快捷键 ctrl + j
 ### Collection 接口遍历对象方式 2-for循环增强
 增强 for 循环，可以代替 iterator 迭代器， 特点： 增强 for 循环 就是简化版的 iterator ，本质一样， 底层仍然是迭代器，只能用来遍历集合和数组。 可以理解成就是简化版本的 迭代器遍历。 快捷方式 I
 
 **基本语法：**
-
-    for (元素类型 元素名： 集合名或数组名){
-        访问元素
-    }
-
+```java
+for (元素类型 元素名： 集合名或数组名){
+    访问元素
+}
+```
 ## List 接口和常用方法
 ### List 接口基本介绍
 List 接口是 Collection 接口的子接口
