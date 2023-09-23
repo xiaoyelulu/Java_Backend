@@ -6,7 +6,10 @@ $ git init
 
 $ git clone [url]  # https://gitee.com/kuangstudy/openclass.git
 
+#查看配置
+git config -l
 
+git config --global --list
 #查看指定文件状态
 
 git status [filename]
