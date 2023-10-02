@@ -80,3 +80,32 @@ new FileInputStream(filePath), "gbk"));`
     - getProperty(key) : 根据键获取值
     - setProperty(key, value) : 设置键值对到 Properties 对象
     - store : 将 Properties 中的键值对存储到配置文件，在 idea 中，保存信息到配置文件，如果含有中文，会存储为 unicode 码
+4. 例子：
+    ```java
+    //使用 Properties 类来读取 mysql.properties 文件
+    //1. 创建 Properties 对象
+    Properties properties = new Properties();
+    //2. 加载指定配置文件
+    properties.load(new FileReader("src\\mysql.properties"));
+    //3. 把 k-v 显示控制台
+    properties.list(System.out);
+    //4. 根据 key 获取对应的值
+    String user = properties.getProperty("user");
+    String pwd = properties.getProperty("pwd");
+    ```
+5. 创建对象：
+    ```java
+    //使用 Properties 类来创建 配置文件, 修改配置文件内容
+    Properties properties = new Properties();
+    //创建
+    //1.如果该文件没有 key 就是创建
+    //2.如果该文件有 key ,就是修改
+    properties.setProperty("charset", "utf8");
+    properties.setProperty("user", "汤姆");//注意保存时，是中文的 unicode 码值
+    properties.setProperty("pwd", "888888");
+    //将 k-v 存储文件中即可
+    properties.store(new FileOutputStream("src\\mysql2.properties"), null);
+    System.out.println("保存配置文件成功~");
+    ```
+
+    **需求 -> 思路 -> 代码**
